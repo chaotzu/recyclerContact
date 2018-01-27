@@ -5,7 +5,10 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +50,33 @@ public class MainActivity extends AppCompatActivity {
 
     * */
 
+    //Decirle que use nuestro menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
 
+    //implementar funcionalidad cada menu
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.registerContact:
+                Toast.makeText(getBaseContext(), "Registro", Toast.LENGTH_LONG);
+                return true;
+            case R.id.deleteContact:
+                Toast.makeText(getBaseContext(), "Borrar", Toast.LENGTH_LONG);
+                return true;
+            case R.id.searchContact:
+                Toast.makeText(getBaseContext(), "Buscar", Toast.LENGTH_LONG);
+                return true;
+            case R.id.favoritesContact:
+                Toast.makeText(getBaseContext(), "Favoritos", Toast.LENGTH_LONG);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     public List<Contact> getContacts(){
         List<Contact> contacts = new ArrayList<>();
